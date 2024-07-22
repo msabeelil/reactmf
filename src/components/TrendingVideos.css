@@ -1,0 +1,31 @@
+.slider-container{
+  padding: 10px;
+  background-color: aquamarine;
+}
+.slick-slider {
+  width: auto;
+  margin: 0 auto;
+}
+
+.slick-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+.trending-video {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+}
+.trending-video > p {
+  margin-top: 10px;
+  font-size: 12px;
+}
