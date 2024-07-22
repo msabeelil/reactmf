@@ -58,7 +58,7 @@ function TrendingVideos() {
   return videosData ? (
     <div className="slider-container">
       <h3>Trending Videos</h3>
-      {/* <Slider {...settings}> */}
+      <Slider {...settings}>
         {videosData?.map((video) => (
           <div key={video.videoId} className="trending-video">
             <img
@@ -69,7 +69,7 @@ function TrendingVideos() {
             <p>{video?.title}</p>
           </div>
         ))}
-      {/* </Slider> */}
+      </Slider>
     </div>
   ) : (
     <div>Loading trending videos...</div>

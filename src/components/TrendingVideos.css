@@ -6,7 +6,11 @@
   width: auto;
   margin: 0 auto;
 }
-
+.slick-slide div {
+  margin: 0px 5px;
+  display: flex;
+  flex-direction: row;
+}
 .slick-slide img {
   display: block;
   width: 100%;
