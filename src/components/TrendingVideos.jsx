@@ -67,6 +67,7 @@ function TrendingVideos() {
               className="video-thumnail"
             />
             <p>{video?.title}</p>
+            <a href={video.videoURL}>Go to video</a>
           </div>
         ))}
       </Slider>
