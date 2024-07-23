@@ -7,16 +7,17 @@ import "./TrendingVideos.css";
 import { sendMessageToAndroid } from "../androidBridge";
 function TrendingVideos() {
   const [videosData, setVideosData] = useState(null);
-  const handleEmitEvent = () => {
-    console.log('Clicked');
+  const handleEmitEvent = (e) => {
+    e.preventDefault();
+    console.log("Clicked");
     sendMessageToAndroid("enroll", { key: "userId123" });
   };
 
   const fetchTrendingVideos = async () => {
     const apiUrl =
-      "https://communityapi.infinitylearn.com/video_playlist/get/videos/4/115/4";
+      "https://communityapi.infinitylearn.com/video_playlist/get/videos/1/1/6";
     const authToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjE3MjQyODksImlhdCI6MTcyMTYzNzg4OSwiREJJZCI6IjIzMDM2NzEiLCJGaXJzdE5hbWUiOiJNYWxsaWsiLCJMYXN0TmFtZSI6IlRvbmRlcHUiLCJ1aWQiOiIiLCJUZW5hbnRJZCI6MSwiVGVuYW50Q29kZSI6ImluZmluaXR5bGVhcm4iLCJSb2xlTmFtZSI6IlN0dWRlbnQsU3VwZXIgQWRtaW4iLCJSb2xlSWQiOiIxLDUiLCJ1YW1faWQiOjIzMDM2NzEsImNybl9pZCI6IkNSTlAzMDBUMDAwMDFKRkpVWlpQIn0.cNr9qkdx0PPUFOTu9t5a9fgww8YuXrqS11U6GYpwUTU";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjE4MTE0OTcsImlhdCI6MTcyMTcyNTA5NywiREJJZCI6IjIzMDM2NzEiLCJGaXJzdE5hbWUiOiJNYWxsaWsiLCJMYXN0TmFtZSI6IlRvbmRlcHUiLCJ1aWQiOiIiLCJUZW5hbnRJZCI6MSwiVGVuYW50Q29kZSI6ImluZmluaXR5bGVhcm4iLCJSb2xlTmFtZSI6IlN0dWRlbnQsU3VwZXIgQWRtaW4iLCJSb2xlSWQiOiIxLDUiLCJ1YW1faWQiOjIzMDM2NzEsImNybl9pZCI6IkNSTlAzMDBUMDAwMDFKRkpVWlpQIn0.KcgQZbzUH9w_Ev2E2XeMDBibfjRfLlUVuUWKEwJO98g";
     try {
       const response = await fetch(apiUrl, {
         method: "GET", // HTTP method
@@ -61,23 +62,23 @@ function TrendingVideos() {
     slidesToScroll: 3,
   };
   return videosData ? (
-    <div className="slider-container">
+    <div className="widget-container">
       <h3>Trending Videos</h3>
-      <Slider {...settings}>
-        {videosData?.map((video) => (
-          <div key={video.videoId} className="trending-video">
-            <img
-              src={video?.thumbnailURL}
-              alt="video image"
-              className="video-thumnail"
-            />
-            <p>{video?.title}</p>
-            <button onClick={handleEmitEvent}>
-              Go to video
-            </button>
-          </div>
-        ))}
-      </Slider>
+      <div className="slider-container">
+        <Slider {...settings}>
+          {videosData?.map((video) => (
+            <div key={video.videoId} className="trending-video">
+              <img
+                src={video?.thumbnailURL}
+                alt="video image"
+                className="video-thumnail"
+              />
+              <p>{video?.title}</p>
+              <button onClick={handleEmitEvent}>Go to video</button>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   ) : (
     <div>Loading trending videos...</div>

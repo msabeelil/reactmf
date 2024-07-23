@@ -1,15 +1,13 @@
+.widget-container{
+  margin: 10px;
+}
 .slider-container{
   padding: 10px;
 }
-.slick-track {
-  display: flex;
+.slick-slider {
+  width: auto;
+  margin: 0 auto;
 }
-
-.slick-slide {
-  width: 100vw !important;
-  margin: 0;
-}
-
 .slick-slide div {
   margin: 0px 5px;
   display: flex;
@@ -30,7 +28,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  /* gap: 20px; */
   padding: 10px;
 }
 .trending-video > p {
