@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { echo } from "../capacitorService";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./TrendingVideos.css";
+import { sendMessageToAndroid } from "../androidBridge";
 function TrendingVideos() {
   const [videosData, setVideosData] = useState(null);
+  const handleEmitEvent = () => {
+    console.log('Clicked');
+    sendMessageToAndroid("enroll", { key: "userId123" });
+  };
+
   const fetchTrendingVideos = async () => {
     const apiUrl =
       "https://communityapi.infinitylearn.com/video_playlist/get/videos/4/115/4";
@@ -67,7 +72,9 @@ function TrendingVideos() {
               className="video-thumnail"
             />
             <p>{video?.title}</p>
-            <a href={video.videoURL}>Go to video</a>
+            <button onClick={handleEmitEvent}>
+              Go to video
+            </button>
           </div>
         ))}
       </Slider>

@@ -1,11 +1,15 @@
 .slider-container{
   padding: 10px;
-  background-color: aquamarine;
 }
-.slick-slider {
-  width: auto;
-  margin: 0 auto;
+.slick-track {
+  display: flex;
 }
+
+.slick-slide {
+  width: 100vw !important;
+  margin: 0;
+}
+
 .slick-slide div {
   margin: 0px 5px;
   display: flex;
